@@ -1,14 +1,11 @@
 import Author from "../models/authors.js";
-import cors from "cors";
 import dotenv from "dotenv"; dotenv.config();
 import express from "express";
-import morgan from "morgan";
+
 const { MONGO_URI } = process.env;
 
 // ROUTER SETTING
 const router = express.Router();
-router.use(cors({origin:"*"}));
-router.use(morgan("dev")),
 router.use(express.json());
 
 
