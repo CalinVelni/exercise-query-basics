@@ -1,8 +1,5 @@
 import Author from "../models/authors.js";
-import dotenv from "dotenv"; dotenv.config();
 import express from "express";
-
-const { MONGO_URI } = process.env;
 
 // ROUTER SETTING
 const router = express.Router();
