@@ -1,0 +1,8 @@
+Creare un server Express collegato a un Database di MongoDB (ATLAS) che gestisce la CRUD di base (GET, POST, PUT, DELETE) per due risorse: books, authors.
+Gestite a piacere gli Schema, ma /books deve avere una proprietà required "author", di tipo ObjectID, che si riferisce all'ID di un autore.
+Author deve avere almeno una proprietà address (con Schema proprio, come visto a lezione) e almeno altre 5 proprietà, tra cui "name" e "age".
+
+BONUS:
+Quando viene fatta la GET di /books, popolare la proprietà author con l'autore corrispondente, selezionando solo la proprietà "name". 
+Quando invece viene fatta la GET del singolo book (/books:id), popolare la proprietà author selezionando le proprietà "name", "age" e altre 2 a piacere.
+Invece, nelle chiamate di /authors passare sempre tutte le proprietà degli autori.
