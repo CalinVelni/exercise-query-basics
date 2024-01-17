@@ -50,7 +50,7 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
     try{
         let author = await Author.findById(req.params.id);
-        author = {...author, ...req.body};
+        author.set(req.body);
         await author.save();
         res.send(author);
     }catch(err){
@@ -62,9 +62,11 @@ router.put("/:id", async (req, res) => {
 // UPDATE RESOURCE PROPS
 router.patch("/:id", async (req, res) => {
     try{
-        let author = await Author.findById(req.params.id);
-        author = {...author, ...req.body};
-        await author.save();
+        let author = await Author.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true,
+            context: "query"
+        });
         res.send(author);
     }catch(err){
         res.status(400).send(err.message);
