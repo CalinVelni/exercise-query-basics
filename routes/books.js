@@ -45,7 +45,10 @@ router.get("/:id", async (req, res) => {
 // UPDATE WHOLE RESOURCE
 router.put("/:id", async (req, res) => {
     try{
-        
+        let book = await Author.findById(req.params.id);
+        book.set(req.body);
+        await book.save();
+        res.send(book);
     }catch(err){
         res.status(400).send(err.message);
     }
@@ -55,7 +58,12 @@ router.put("/:id", async (req, res) => {
 // UPDATE RESOURCE PROPS
 router.patch("/:id", async (req, res) => {
     try{
-
+        let book = await Book.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true,
+            context: "query"
+        });
+        res.send(book);
     }catch(err){
         res.status(400).send(err.message);
     }
